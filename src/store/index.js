@@ -44,7 +44,18 @@ export default new Vuex.Store({
     async createTodo({ commit }, newTodo) {
       const result = await axios.post('https://aodapi.eralpsoftware.net/todo', newTodo);
       commit('SET_NEWTODO', result.data);
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
     },
+
+    // eslint-disable-next-line no-empty-pattern
+    async delTodo({ }, id) {
+      await axios.delete(`https://aodapi.eralpsoftware.net/todo/${id}`);
+      // console.log(result.data);
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
+    },
+
   },
   modules: {
   },
