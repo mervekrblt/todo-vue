@@ -4,8 +4,10 @@ import axios from 'axios';
 
 Vue.use(Vuex);
 
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1lcnZlIEthcmFidWx1dCIsImlkIjo3MywiaWF0IjoxNjE1MzAxNDY4LCJleHAiOjE2MTUzNzM0Njh9.tfW-lsGntxUUSe7DuBx5xZiTl5zzgggq_ttveVlTYaU';
+// My token
+const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1lcnZlIEthcmFidWx1dCIsImlkIjo3MywiaWF0IjoxNjE1MzczOTU2LCJleHAiOjE2MTU0NDU5NTZ9.Lc5FM0LzUPQPoQfySF-PWv1Lll-wov1mhvmiwUsakT8';
 
+// Key Api config
 axios.interceptors.request.use(
   (config) => {
     // eslint-disable-next-line no-param-reassign
@@ -16,27 +18,32 @@ axios.interceptors.request.use(
   },
 );
 
-/*
-axios.interceptors.request.use(
-  (config) => {
-    // eslint-disable-next-line no-param-reassign
-    config.headers.authorization = `Bearer ${accessToken}`;
-    return config;
-  },
-);
-*/
 export default new Vuex.Store({
   state: {
-    todos: ['merve'],
+    todos: [],
   },
   mutations: {
+
+    SET_TODOS(state, data) {
+      state.todos = data.body;
+      // console.log(state.todos);
+    },
+
+    SET_NEWTODO(state, data) {
+      state.todos.push(data);
+    },
   },
+
   actions: {
 
-    async fetchMeetups() {
-      const time = new Date();
+    async fetchTodos({ commit }) {
       const result = await axios.get('https://aodapi.eralpsoftware.net/todo');
-      console.log(result.data, time);
+      commit('SET_TODOS', result.data);
+    },
+
+    async createTodo({ commit }, newTodo) {
+      const result = await axios.post('https://aodapi.eralpsoftware.net/todo', newTodo);
+      commit('SET_NEWTODO', result.data);
     },
   },
   modules: {

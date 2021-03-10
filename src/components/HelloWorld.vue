@@ -1,24 +1,20 @@
-<template>
-  <div class="hello">
-    <h2>Merve</h2>
-    <h1>{{ todos.length }}</h1>
-    <button @click="fetchMeetups"></button>
-  </div>
-</template>
-
 <script>
-import { mapState, mapActions } from 'vuex';
+import NewTodo from './NewTodo.vue';
+import Todos from './Todos.vue';
 
 export default {
+  components: { Todos, NewTodo },
   name: 'HelloWorld',
-  computed: {
-    ...mapState(['todos']),
-  },
-  methods: {
-    ...mapActions(['fetchMeetups']),
-  },
 };
 </script>
+
+<template>
+  <div class="hello">
+    <h2>To-Do</h2>
+    <new-todo></new-todo>
+    <todos></todos>
+  </div>
+</template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
