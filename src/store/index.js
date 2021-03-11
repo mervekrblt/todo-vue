@@ -5,7 +5,7 @@ import axios from 'axios';
 Vue.use(Vuex);
 
 // My token
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1lcnZlIEthcmFidWx1dCIsImlkIjo3MywiaWF0IjoxNjE1MzczOTU2LCJleHAiOjE2MTU0NDU5NTZ9.Lc5FM0LzUPQPoQfySF-PWv1Lll-wov1mhvmiwUsakT8';
+const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1lcnZlIEthcmFidWx1dCIsImlkIjo3MywiaWF0IjoxNjE1NDU2ODY0LCJleHAiOjE2MTU1Mjg4NjR9.nJKhnxJ-q-vKfLKSVYM_54Ofg0DwfydOaM_9XE1MGBg';
 
 // Key Api config
 axios.interceptors.request.use(
